@@ -1,0 +1,92 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base */
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #14532D, #22C55E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card */
+.card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 32px 28px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon */
+.icon {
+  background-color: #14532D;
+  color: white;
+  font-size: 32px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+/* Headings */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.language-heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+/* Language Buttons */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lang-btn {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.lang-btn:hover {
+  background-color: #f0fdf4;
+  border-color: #10b981;
+}
+
+/* Selected button */
+.lang-btn.selected {
+  background-color: #14532D;
+  color: white;
+  border-color: #14532D;
+  box-shadow: 0 0 6px rgba(20, 83, 45, 0.5);
+}

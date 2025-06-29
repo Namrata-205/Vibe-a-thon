@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalogue</title>
+    <!-- Bootstrap 5 CDN Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h2 {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 30px;
+            background-color: #4CAF50; /* Green */
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .table {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 12px;
+        }
+        .table th {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #e1f5fe;
+        }
+        .table-light th {
+            background-color: #f8f9fa;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .card {
+            margin-top: 30px;
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #4CAF50; /* Green */
+            border-color: #4CAF50; /* Green */
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049; /* Darker green on hover */
+            border-color: #3e8e41; /* Darker green border on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h2 class="text-center">Book Catalogue</h2>
+
+        <!-- Search Forms Grid -->
+        <div class="row">
+            <!-- Search by Genre Form -->
+            <div class="col-md-6 col-sm-12 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Search by Genre</strong>
+                    </div>
+                    <form method="POST" action="{{ url_for('book_catalogue') }}">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="genre" name="genre" placeholder="Enter Genre">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Search by Book Name Form -->
+            <div class="col-md-6 col-sm-12 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Search by Book Name</strong>
+                    </div>
+                    <form method="POST" action="{{ url_for('book_catalogue') }}">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="book_name" name="book_name" placeholder="Enter Book Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book List Table -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <strong>Available Books</strong>
+            </div>
+            <table class="table table-bordered mt-4 table-striped table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Book Name</th>
+                        <th>Genre</th>
+                        <th>Total Copies</th>
+                        <th>Available Copies</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book.ISBN }}</td>
+                            <td>{{ book.B_Name }}</td>
+                            <td>{{ book.Genre }}</td>
+                            <td>{{ book.Total_Copies }}</td>
+                            <td>{{ book.Available_Copies }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Library Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS & Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
