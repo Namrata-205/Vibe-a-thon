@@ -208,12 +208,6 @@ scheduler.start()
 atexit.register(lambda: scheduler.shutdown())
 
 
-import google.generativeai as genai
-
-# Initialize Gemini
-genai.configure(api_key=os.getenv("OMNIDIMENSION_API_KEY"))
-gemini = genai.GenerativeModel("gemini-pro")
-
 @app.route('/chatbot', methods=['POST'])
 def chatbot_reply():
     data = request.json
@@ -223,13 +217,17 @@ def chatbot_reply():
         return jsonify({'error': 'No message provided'}), 400
 
     try:
-        response = gemini.generate_content(user_message)
-        reply = response.text.strip() if hasattr(response, "text") else "No response."
+        response = requests.post(
+            "https://omnidimension-api-url.com/api/chat",  # Replace with actual URL
+            headers={"Authorization": f"Bearer {os.getenv('OMNIDIMENSION_API_KEY')}"},
+            json={"message": user_message}
+        )
 
-        return jsonify({"reply": reply})
+        chatbot_response = response.json().get("response", "Sorry, no response available.")
+        return jsonify({"reply": chatbot_response})
 
     except Exception as e:
-        return jsonify({"error": f"Chatbot failed: {str(e)}"}), 500
+        return jsonify({"error": f"Failed to get response from chatbot: {str(e)}"}), 500
 
 
 if __name__ == '__main__':
