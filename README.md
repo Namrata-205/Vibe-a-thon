@@ -14,14 +14,15 @@ AgroMitra is an AI-powered assistant that helps farmers by:
 
     Weather Alerts: Automatically checks weather conditions and sends severe weather warnings to farmers on WhatsApp.
 
-    Multilingual Support: Sends messages in the farmer’s preferred language.
-
+    Soil Analysis : Provides in depth soil analysis
     Scheduled Monitoring: Uses APScheduler to run hourly weather checks.
 
     Technologies Used
-Area	Tech Stack
-Backend	Python, Flask
-AI/ML	PyTorch, TorchVision, DenseNet121
-Weather API	OpenWeatherMap API
-Scheduler	APScheduler
-Frontend	(Planned) HTML/CSS or React + Tailwind
+| Area            | Tech Stack                             |
+| --------------- | -------------------------------------- |
+| **Backend**     | Python, Flask                          |
+| **AI/ML**       | PyTorch, TorchVision, DenseNet121      |
+| **Weather API** | OpenWeatherMap API                     |
+| **Messaging**   | Twilio WhatsApp Sandbox                |
+| **Scheduler**   | APScheduler                            |
+| **Frontend**    | (Planned) HTML/CSS or React + Tailwind |
